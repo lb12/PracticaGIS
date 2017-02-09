@@ -1,0 +1,27 @@
+1º Instalar PostgreSQL y Eclipse
+2º Instalar PostGIS
+3º Crear la BD --> Habilitar PostGIS con esa BD ejecutando la siguiente query SQL en la BD desde pgAdmin:
+**********************************************************
+-- Enable PostGIS (includes raster)
+CREATE EXTENSION postgis;
+-- Enable Topology
+CREATE EXTENSION postgis_topology;
+-- Enable PostGIS Advanced 3D 
+-- and other geoprocessing algorithms
+-- sfcgal not available with all distributions
+CREATE EXTENSION postgis_sfcgal;
+-- fuzzy matching needed for Tiger
+CREATE EXTENSION fuzzystrmatch;
+-- rule based standardizer
+CREATE EXTENSION address_standardizer;
+-- example rule data set
+CREATE EXTENSION address_standardizer_data_us;
+-- Enable US Tiger Geocoder
+CREATE EXTENSION postgis_tiger_geocoder;
+**********************************************************
+3.1 Una vez hecho esto, creamos la tabla con la informacion que necesitamos (ya tenemos PostGIS ligado a nuestra BD)
+
+4º Crear la pagina JSP
+5º Montar todo el tema del leaflet //http://leafletjs.com/examples/quick-start/
+5.1 Mencionar tema de las librerias que se recogen de Leaflet (CSS y Script)
+6º Conectar a la BD desde Java a PostgreSQL
