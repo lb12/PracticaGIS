@@ -38,7 +38,8 @@ $(document).ready(function () {
             cache: false,
             success: function (resp) { /*Obtenemos aqui el JSON*/
                 $.each(resp, function (indice, facultad) { /*Each tiene 2 args: el array con los objetos (resp) y una funcion con los indices de cada obj y un obj de la coleccion*/
-                    L.marker(facultad.coordenadas).addTo(mymap).bindPopup(facultad.nombre + "<br>" + facultad.descripcion).on('click',
+                    var imagenFacultad = "<img border=\"0\" src=" + facultad.imagen + ">";
+                    L.marker(facultad.coordenadas).addTo(mymap).bindPopup("<label>" + facultad.nombre + "</label>" + facultad.descripcion + "<br><br>" + imagenFacultad).on('click',
                             function () {
                                 var coordenadas = facultad.coordenadas.toString();
                                 var coordX = coordenadas.substring(0, facultad.coordenadas.toString().indexOf(","));
@@ -58,7 +59,7 @@ $(document).ready(function () {
             }
         });
     }
-    
+
 //Funcion que actualiza los input hidden
     function actualizarHidden(numeroHidden, x, y) {
         $("#x" + numeroHidden).val(x); //Coordenada x
