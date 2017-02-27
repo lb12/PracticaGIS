@@ -4,9 +4,7 @@ $(document).ready(function () {
     var contadorPuntos = 0, contadorRutas = 0;
     var x1, y1, x2, y2;
     var mymap = L.map('mapid').setView([40.570154, -3.314120], 12); //Centrado en Azuqueca (mostamos facultades de Alcala y Guada)
-    
-    
-    
+
     representarLayer();
     representarFacultades();
 
@@ -28,16 +26,10 @@ $(document).ready(function () {
         x1 = x2 = y1 = y2 = "";
         actualizarHidden(1, x1, y1);
         actualizarHidden(2, x2, y2);
+        actualizarOrigen("");
+        actualizarDestino("");
         refrescarMapa();
     });
-
-//Funcion que refresca el mapa y lo inicializa de nuevo (lo limpia de ruta)
-    function refrescarMapa() {
-        mymap.remove();
-        mymap = L.map('mapid').setView([40.570154, -3.314120], 12); //Centrado en Azuqueca (mostamos facultades de Alcala y Guada)
-        representarLayer();
-        representarFacultades();
-    }
 
 //Funcion que incluye las facultades de la universidad en el mapa con los marcadores
     function representarFacultades() {
@@ -49,7 +41,7 @@ $(document).ready(function () {
             success: function (resp) { /*Obtenemos aqui el JSON*/
                 $.each(resp, function (i, facultad) { /*Each tiene 2 args: el array con los objetos (resp) y una funcion con los indices de cada obj y un obj de la coleccion*/
                     var imagenFacultad = "<img border=\"0\" src=" + facultad.imagen + ">";
-                    L.circle(facultad.coordenadas, facultad.radio).addTo(mymap).bindPopup("<label>" + facultad.nombre + "</label>" + facultad.descripcion + "<br><br>" + imagenFacultad).on('click', function () {
+                    L.circle(facultad.coordenadas, facultad.radio, {color: "#BCAAA4",fillColor: '#006064'}).addTo(mymap).bindPopup("<label>" + facultad.nombre + "</label>" + facultad.descripcion + "<br><br>" + imagenFacultad).on('click', function () {
                         crearPunto(facultad);
                     });
                     L.marker(facultad.coordenadas).addTo(mymap).bindPopup("<label>" + facultad.nombre + "</label>" + facultad.descripcion + "<br><br>" + imagenFacultad).on('click', function () {
@@ -80,6 +72,14 @@ $(document).ready(function () {
         contadorPuntos++;
     }
 
+//Funcion que refresca el mapa y lo inicializa de nuevo (lo limpia de ruta)
+    function refrescarMapa() {
+        mymap.remove();
+        mymap = L.map('mapid').setView([40.570154, -3.314120], 12); //Centrado en Azuqueca (mostamos facultades de Alcala y Guada)
+        representarLayer();
+        representarFacultades();
+    }
+
 //Funcion que actualiza los input hidden
     function actualizarHidden(numeroHidden, x, y) {
         $("#x" + numeroHidden).val(x); //Coordenada x
@@ -87,28 +87,28 @@ $(document).ready(function () {
     }
 
 //Funcion que actualiza el input origen con el nombre de la facultad
-    function actualizarOrigen(nombreOrigen){
+    function actualizarOrigen(nombreOrigen) {
         $("#origen").val(nombreOrigen);
     }
 
 //Funcion que actualiza el input destino con el nombre de la facultad
-    function actualizarDestino(nombreDestino){
+    function actualizarDestino(nombreDestino) {
         $("#destino").val(nombreDestino);
     }
-    
+
 //Funcion que incluye el layer con la informacion del copyright en el mapa
     function representarLayer() {
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', {
             maxZoom: 18,
             attribution: '© OpenStreetMap contributors',
             id: 'mapbox.streets'
-        }).addTo(mymap);     
+        }).addTo(mymap);
     }
 
 //Funcion que traza la ruta entre dos puntos
     function enrutar() {
         L.Routing.control({
             waypoints: [L.latLng(x1, y1), L.latLng(x2, y2)]
-        }).addTo(mymap);        
+        }).addTo(mymap);
     }
 });
