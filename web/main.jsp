@@ -26,15 +26,26 @@
     </head>
 
     <body>
-        <div id="mapid"></div>
-        <form id="formulario" action="">
-            <input type="text" name="xn" id="x1" />
-            <input type="text" name="yn" id="y1" />
-            <input type="text" name="xn2" id="x2" />
-            <input type="text" name="yn2" id="y2" />
-            <input type="button" id="botonRuta" value="Trazar Ruta" />
-            <input type="reset" id="botonReset" value="Reiniciar ruta" />
-        </form>
+
+        <div id="titulo">
+            <h1>Maps</h1>            
+        </div>
+
+        <div id="cuerpo">            
+            <div id="mapid"></div>
+
+
+            <form id="formulario" action="">
+                <label>Origen: </label> <input type="text" name="ori" id="origen" size="40"/><br>
+                <input type="hidden" name="xn" id="x1" />
+                <input type="hidden" name="yn" id="y1" /> <br>
+                <label>Destino: </label> <input type="text" name="dest" id="destino" size="40"/><br>
+                <input type="hidden" name="xn2" id="x2" />
+                <input type="hidden" name="yn2" id="y2" />
+                <input type="button" id="botonRuta" value="Trazar Ruta" /> <br>
+                <input type="button" id="botonReset" value="Reiniciar ruta" />
+            </form>
+        </div>
     </body>
 
 </html>

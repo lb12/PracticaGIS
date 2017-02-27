@@ -9,13 +9,15 @@ public class Facultad {
     private String descripcion;
     private String imagen;
     private Double[] coordenadas;
+    private int radio;
 
-    public Facultad(int id, String nombre, String descripcion, String imagen, Double[] coordenadas) {
+    public Facultad(int id, String nombre, String descripcion, String imagen, Double[] coordenadas, int radio) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.coordenadas = coordenadas;
+        this.radio = radio;
     }
 
     public int getId() {
@@ -57,6 +59,15 @@ public class Facultad {
     public void setCoordenadas(Double[] coordenadas) {
         this.coordenadas = coordenadas;
     }
+    
+    public int getRadio() {
+        return radio;
+    }
+
+    public void setRadio(int radio) {
+        this.radio = radio;
+    }
+    
 
     @Override
     public String toString() {

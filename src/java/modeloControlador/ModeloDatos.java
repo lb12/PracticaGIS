@@ -30,7 +30,7 @@ public class ModeloDatos {
 
     public String obtenerFacultades() {
         ArrayList<Facultad> facultades = new ArrayList<>();
-        String query = "SELECT id, nombre, ST_Y(ubicacion::geometry) AS lat, ST_X(ubicacion::geometry) AS lon, descripcion, imagen FROM facultades;";
+        String query = "SELECT id, nombre, ST_Y(ubicacion::geometry) AS lat, ST_X(ubicacion::geometry) AS lon, radio, descripcion, imagen FROM facultades;";
         /*"ST_Y(ubicacion::geometry) AS lat, ST_X(ubicacion::geometry) AS lon" --> Devuelve las coordendas de la facultad*/
         Gson gson = new Gson();
         try {
@@ -38,7 +38,7 @@ public class ModeloDatos {
             resultSet = set.executeQuery(query);
             while (resultSet.next()) {
                 Double[] coord = {resultSet.getDouble("lon"), resultSet.getDouble("lat")};
-                facultades.add(new Facultad(resultSet.getInt("id"), resultSet.getString("nombre"), resultSet.getString("descripcion"), resultSet.getString("imagen"), coord));
+                facultades.add(new Facultad(resultSet.getInt("id"), resultSet.getString("nombre"), resultSet.getString("descripcion"), resultSet.getString("imagen"), coord, resultSet.getInt("radio")));
             }
             resultSet.close();
             set.close();
