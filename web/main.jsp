@@ -9,8 +9,6 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-
         <!-- Leaflet -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
@@ -37,10 +35,10 @@
             <div id ="form">
                 <form id="formulario" action="">
                     
-                    <label>Origen: </label> <input type="text" name="ori" id="origen" size="40"/><br>
+                    <label>Origen: </label> <input type="text" name="ori" id="origen" size="40" disabled="true"/><br>
                     <input type="hidden" name="xn" id="x1" />
                     <input type="hidden" name="yn" id="y1" /> <br>
-                    <label>Destino: </label> <input type="text" name="dest" id="destino" size="40"/><br>
+                    <label>Destino: </label> <input type="text" name="dest" id="destino" size="40" disabled="true"/><br>
                     <input type="hidden" name="xn2" id="x2" />
                     <input type="hidden" name="yn2" id="y2" />
                     <div class="btns">

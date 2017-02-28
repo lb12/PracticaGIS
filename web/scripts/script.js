@@ -98,10 +98,10 @@ $(document).ready(function () {
 
 //Funcion que incluye el layer con la informacion del copyright en el mapa
     function representarLayer() {
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', {
+        L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png", {
             maxZoom: 18,
-            attribution: '© OpenStreetMap contributors',
-            id: 'mapbox.streets'
+            attribution: "© OpenStreetMap contributors",
+            id: "mapbox.streets"
         }).addTo(mymap);
     }
 
