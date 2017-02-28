@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 
-        <!-- OSRM ROUTING -->
+        <!-- LEAFLET ROUTING MACHINE -->
         <link rel="stylesheet" href="route-maching/leaflet-routing-machine.css" />
         <script src="route-maching/leaflet-routing-machine.js"></script>
 
@@ -35,12 +35,8 @@
             <div id ="form">
                 <form id="formulario" action="">
                     
-                    <label>Origen: </label> <input type="text" name="ori" id="origen" size="40" disabled="true"/><br>
-                    <input type="hidden" name="xn" id="x1" />
-                    <input type="hidden" name="yn" id="y1" /> <br>
+                    <label>Origen: </label> <input type="text" name="ori" id="origen" size="40" disabled="true"/><br><br>
                     <label>Destino: </label> <input type="text" name="dest" id="destino" size="40" disabled="true"/><br>
-                    <input type="hidden" name="xn2" id="x2" />
-                    <input type="hidden" name="yn2" id="y2" />
                     <div class="btns">
                         <input type="button" id="botonRuta" value="Trazar Ruta" /> 
                         <input type="button" id="botonReset" value="Reiniciar ruta" />

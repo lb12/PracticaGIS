@@ -24,8 +24,6 @@ $(document).ready(function () {
     $("#botonReset").click(function () {
         contadorRutas = contadorPuntos = 0;
         x1 = x2 = y1 = y2 = "";
-        actualizarHidden(1, x1, y1);
-        actualizarHidden(2, x2, y2);
         actualizarOrigen("");
         actualizarDestino("");
         refrescarMapa();
@@ -61,12 +59,10 @@ $(document).ready(function () {
         if (contadorPuntos === 0) {
             x1 = coordX;
             y1 = coordY;
-            actualizarHidden(1, x1, y1);
             actualizarOrigen(facultad.nombre);
         } else if (contadorPuntos === 1) {
             x2 = coordX;
             y2 = coordY;
-            actualizarHidden(2, x2, y2);
             actualizarDestino(facultad.nombre);
         }
         contadorPuntos++;
@@ -78,12 +74,6 @@ $(document).ready(function () {
         mymap = L.map('mapid').setView([40.570154, -3.314120], 12); //Centrado en Azuqueca (mostamos facultades de Alcala y Guada)
         representarLayer();
         representarFacultades();
-    }
-
-//Funcion que actualiza los input hidden
-    function actualizarHidden(numeroHidden, x, y) {
-        $("#x" + numeroHidden).val(x); //Coordenada x
-        $("#y" + numeroHidden).val(y); //Coordenada y
     }
 
 //Funcion que actualiza el input origen con el nombre de la facultad
