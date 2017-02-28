@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="modeloControlador.Facultad"%>
-<%@page import="modeloControlador.ModeloDatos"%>
+<%@page import="sourcePackage.Facultad"%>
+<%@page import="sourcePackage.ModeloDatos"%>
 
 <!DOCTYPE html>
 <html>
